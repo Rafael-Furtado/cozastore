@@ -18,4 +18,6 @@ public class Tamanho
     [StringLength(30, ErrorMessage = "A Categoria deve possuir no máximo 30 caracteres!")]
     public string Nome { get; set; }
 
+    public ICollection<ProdutoEstoque> Estoques { get; set; }
+
 }    

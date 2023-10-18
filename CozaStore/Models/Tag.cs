@@ -14,4 +14,5 @@ public class Tag
     [StringLength(20, ErrorMessage = "O nome deve possuir no máximo 20 caracteres!")]
     public string Nome { get; set; }
 
+    public ICollection<ProdutoTag> Produtos { get; set; }
 }    

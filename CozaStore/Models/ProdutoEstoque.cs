@@ -16,7 +16,7 @@ public class ProdutoEstoque
     public Produto Produto { get; set; }
 
     [Required(ErrorMessage = "Informe o Tamanho")]
-    public byte TamanhoID { get; set; }
+    public byte TamanhoId { get; set; }
     [ForeignKey("TamanhoId")]
     public Tamanho Tamanho { get; set; }
 
