@@ -57,11 +57,11 @@ public class AppDbContext : IdentityDbContext
         );
         builder.Entity<ProdutoCategoria>()
             .HasOne(pc => pc.Produto)
-            .WithMany(pc => pc.Categorias)
+            .WithMany(p => p.Categorias)
             .HasForeignKey(pc => pc.ProdutoId);
         builder.Entity<ProdutoCategoria>()
             .HasOne(pc => pc.Categoria)
-            .WithMany(pc => pc.Produtos)
+            .WithMany(c => c.Produtos)
             .HasForeignKey(pc => pc.CategoriaId);
         #endregion
 
