@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CozaStore.ViewModels.Account;
 using System.Net.Mail;
+using System.Security.Claims;
 
 namespace CozaStore.Controllers;
 
@@ -67,6 +68,22 @@ public class AccountController : Controller
             ModelState.AddModelError(string.Empty, "Usuário e/ou Senha Inválidos!!!");
         }
         return View(login);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        _logger.LogInformation($"Usuário {ClaimTypes.Email} fez logoff");
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        RegisterVM register = new();
+        return View(register);
     }
 
     public static bool IsValidEmail(string email)
